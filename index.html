@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#e7a0b2">
+  <title>Rosie OS — Estação de Trabalho</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="desktop" class="desktop" aria-label="Área de trabalho Rosie OS">
+    <div class="wallpaper-glow"></div>
+    <header class="top-note">
+      <span class="rosie-mark">R</span>
+      <span>ROSIE CAFÉ · SISTEMAS INTERNOS</span>
+      <span class="session-tag">SESSÃO LOCAL</span>
+    </header>
+
+    <section class="desktop-icons" aria-label="Atalhos">
+      <button class="desktop-icon" data-open="welcome"><span class="icon-art computer">▣</span><span>Meu Computador</span></button>
+      <button class="desktop-icon" data-open="files"><span class="icon-art folder">📁</span><span>Arquivos</span></button>
+      <button class="desktop-icon" data-open="mail"><span class="icon-art envelope">✉</span><span>Correio Interno</span></button>
+      <button class="desktop-icon" data-open="recycle"><span class="icon-art bin">♲</span><span>Lixeira</span></button>
+      <button class="desktop-icon" data-open="terminal"><span class="icon-art terminal-icon">_&gt;</span><span>Terminal</span></button>
+    </section>
+
+    <section id="welcome" class="window active-window" data-window="welcome" style="left:23%;top:16%;width:min(540px,74vw)">
+      <div class="titlebar"><span class="window-title"><span class="mini-app">R</span> Rosie OS — Bem-vindo</span><div class="window-controls"><button data-minimize="welcome" aria-label="Minimizar">_</button><button data-close="welcome" aria-label="Fechar">×</button></div></div>
+      <div class="window-body welcome-body">
+        <div class="welcome-banner"><div class="big-rosie">R</div><div><h1>Bem-vindo à Rosie Café!</h1><p>Um ambiente de trabalho mais doce, todos os dias.</p></div></div>
+        <p>Este terminal de trabalho é destinado a funcionários autorizados da Rosie Café. A organização começa com você.</p>
+        <div class="notice"><strong>Conta atual:</strong> JUNK <span class="level-pill">NÍVEL DE ACESSO 0</span><br><small>Alguns recursos estão indisponíveis para este usuário.</small></div>
+        <div class="welcome-actions"><button class="xp-button" data-open="files">Explorar arquivos</button><button class="xp-button" data-open="terminal">Abrir terminal</button></div>
+        <p class="tiny muted">Rosie OS 2.1 · Ambiente simulado · Agradecemos sua colaboração!</p>
+      </div>
+    </section>
+
+    <section id="files" class="window" data-window="files" style="left:12%;top:13%;width:min(590px,82vw)">
+      <div class="titlebar"><span class="window-title"><span class="mini-folder">📁</span> Explorador de Arquivos</span><div class="window-controls"><button data-minimize="files" aria-label="Minimizar">_</button><button data-close="files" aria-label="Fechar">×</button></div></div>
+      <div class="toolbar"><button data-open="welcome">← Voltar</button><span>📍 C:\ROSIE\JUNK\DOCUMENTS</span></div>
+      <div class="explorer-layout"><aside class="side-panel"><strong>Tarefas do sistema</strong><button data-open="welcome">Informações do sistema</button><button data-open="terminal">Abrir terminal</button><hr><strong>Outros locais</strong><span>▸ Documentos</span><span>▸ Arquivos recentes</span></aside>
+        <div class="file-area">
+          <button class="file-item" data-doc="welcome.txt"><span>📄</span><span>Welcome.txt</span></button>
+          <button class="file-item" data-doc="cafe_rules.txt"><span>📄</span><span>cafe_rules.txt</span></button>
+          <button class="file-item" data-doc="company_info.txt"><span>📄</span><span>company_info.txt</span></button>
+          <button class="file-item" data-doc="staff_memo.txt"><span>📄</span><span>staff_memo.txt</span></button>
+          <button class="file-item hidden-file" data-doc="maintenance.log"><span>📄</span><span>maintenance.log</span></button>
+          <button class="file-item hidden-file" data-doc="incident_04.txt"><span>📄</span><span>incident_04.txt</span></button>
+          <p class="file-hint">Selecione um arquivo para abrir. Alguns itens podem aparecer após descobrir pistas.</p>
+        </div>
+      </div>
+      <div class="statusbar"><span>6 objeto(s)</span><span>Usuário: JUNK</span></div>
+    </section>
+
+    <section id="terminal" class="window terminal-window" data-window="terminal" style="left:29%;top:29%;width:min(590px,84vw)">
+      <div class="titlebar"><span class="window-title"><span class="mini-app dark">_&gt;</span> Rosie Terminal — JUNK</span><div class="window-controls"><button data-minimize="terminal" aria-label="Minimizar">_</button><button data-close="terminal" aria-label="Fechar">×</button></div></div>
+      <div class="terminal-content"><div id="terminal-output" class="terminal-output"><p>ROSIE CAFÉ SYSTEMS [versão 2.1.0]</p><p>(c) Rosie Café Corporation. Todos os direitos reservados.</p><p>Usuário conectado: JUNK</p><p>Digite <b>help</b> para listar comandos.</p><p class="terminal-warning">Aviso: comandos não autorizados podem ser registrados.</p></div>
+        <form id="terminal-form" class="terminal-form"><label for="terminal-input">&gt;</label><input id="terminal-input" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Comando do terminal"><button type="submit">Executar</button></form>
+      </div>
+    </section>
+
+    <section id="mail" class="window" data-window="mail" style="left:28%;top:20%;width:min(500px,82vw)">
+      <div class="titlebar"><span class="window-title">✉ Correio Interno</span><div class="window-controls"><button data-minimize="mail" aria-label="Minimizar">_</button><button data-close="mail" aria-label="Fechar">×</button></div></div>
+      <div class="window-body"><h2>Caixa de entrada</h2><div class="mail-row"><strong>Christopher</strong><span>Re: revisão de rotina</span><small>Hoje, 08:14</small></div><p>Bom dia! A inauguração está chegando. Por favor, mantenha os relatórios organizados e não deixe a equipe de manutenção esperando.</p><div class="notice"><strong>Nota do sistema:</strong> 1 mensagem marcada como arquivada.</div><button class="xp-button" data-doc="archived_mail.txt">Abrir mensagem arquivada</button></div>
+      <div class="statusbar"><span>Conectado localmente</span><span>1 não lida</span></div>
+    </section>
+
+    <section id="recycle" class="window" data-window="recycle" style="left:32%;top:24%;width:min(430px,82vw)">
+      <div class="titlebar"><span class="window-title">♲ Lixeira</span><div class="window-controls"><button data-minimize="recycle" aria-label="Minimizar">_</button><button data-close="recycle" aria-label="Fechar">×</button></div></div>
+      <div class="window-body"><p>A lixeira está vazia.</p><p class="tiny muted">Última limpeza: registro indisponível.</p><button class="xp-button" id="restore-button">Verificar itens do sistema</button><p id="restore-note" class="tiny"></p></div>
+    </section>
+
+    <section id="reader" class="window reader-window" data-window="reader" style="left:25%;top:20%;width:min(520px,82vw)">
+      <div class="titlebar"><span class="window-title" id="reader-title">Bloco de Notas</span><div class="window-controls"><button data-minimize="reader" aria-label="Minimizar">_</button><button data-close="reader" aria-label="Fechar">×</button></div></div>
+      <div class="reader-menu">Arquivo　 Editar　 Formatar　 Exibir　 Ajuda</div><pre id="reader-content" class="reader-content"></pre><div class="statusbar"><span>Bloco de Notas</span><span>Somente leitura</span></div>
+    </section>
+
+    <div id="start-menu" class="start-menu" hidden>
+      <div class="start-user"><div class="user-avatar">J</div><div><strong>JUNK</strong><small>Funcionário temporário</small></div></div>
+      <div class="start-columns"><div class="start-apps"><button data-open="welcome">▣ Meu Computador</button><button data-open="files">📁 Explorador de Arquivos</button><button data-open="mail">✉ Correio Interno</button><button data-open="terminal">_&gt; Terminal</button><button data-open="recycle">♲ Lixeira</button></div><div class="start-links"><strong>Rosie Café</strong><span>Ajuda e suporte</span><span>Programas internos</span><hr><span class="tiny">Acesso: JUNK</span></div></div>
+      <div class="start-footer"><span>Rosie OS 2.1</span><button id="logoff-button">Encerrar sessão</button></div>
+    </div>
+
+    <footer class="taskbar"><button id="start-button" class="start-button"><span class="windows-flag">✿</span> iniciar</button><div id="task-buttons" class="task-buttons"></div><div class="tray"><span title="Conexão local">▰</span><span title="Volume">◖))</span><time id="clock">00:00</time></div></footer>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <div id="shutdown-screen" class="shutdown-screen" hidden><div class="shutdown-card"><div class="big-rosie">R</div><h2>Rosie OS</h2><p>Sessão encerrada.</p><button id="login-again" class="xp-button">Iniciar sessão</button></div></div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
