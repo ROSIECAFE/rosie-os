@@ -31,7 +31,7 @@
         <p>Este terminal de trabalho é destinado a funcionários autorizados da Rosie Café. A organização começa com você.</p>
         <div class="notice"><strong>Conta atual:</strong> JUNK <span class="level-pill">NÍVEL DE ACESSO 0</span><br><small>Alguns recursos estão indisponíveis para este usuário.</small></div>
         <div class="welcome-actions"><button class="xp-button" data-open="files">Explorar arquivos</button><button class="xp-button" data-open="terminal">Abrir terminal</button></div>
-        <p class="tiny muted">Rosie OS 2.1 · Ambiente simulado · Agradecemos sua colaboração!</p>
+        <p class="tiny muted">Rosie OS 2.2 · Ambiente simulado · Agradecemos sua colaboração!</p>
       </div>
     </section>
 
@@ -44,17 +44,21 @@
           <button class="file-item" data-doc="cafe_rules.txt"><span>📄</span><span>cafe_rules.txt</span></button>
           <button class="file-item" data-doc="company_info.txt"><span>📄</span><span>company_info.txt</span></button>
           <button class="file-item" data-doc="staff_memo.txt"><span>📄</span><span>staff_memo.txt</span></button>
-          <button class="file-item hidden-file" data-doc="maintenance.log"><span>📄</span><span>maintenance.log</span></button>
-          <button class="file-item hidden-file" data-doc="incident_04.txt"><span>📄</span><span>incident_04.txt</span></button>
+          <button class="file-item hidden-file" data-doc="maintenance.log" data-reveal="maintenance.log"><span>📄</span><span>maintenance.log</span></button>
+          <button class="file-item hidden-file" data-doc="incident_04.txt" data-reveal="incident_04.txt"><span>📄</span><span>incident_04.txt</span></button>
+          <button class="file-item hidden-file" data-doc="archived_mail.txt" data-reveal="archived_mail.txt"><span>✉</span><span>archived_mail.txt</span></button>
+          <button class="file-item hidden-file" data-doc="mechanic_statement_07.txt" data-reveal="mechanic_statement_07.txt"><span>📄</span><span>mechanic_statement_07.txt</span></button>
+          <button class="file-item hidden-file" data-doc="animatronics_logs.txt" data-reveal="animatronics_logs.txt"><span>📄</span><span>animatronics_logs.txt</span></button>
+          <button class="file-item hidden-file" data-doc="rosie_vision.pkg" data-reveal="rosie_vision.pkg"><span>📦</span><span>rosie_vision.pkg</span></button>
           <p class="file-hint">Selecione um arquivo para abrir. Alguns itens podem aparecer após descobrir pistas.</p>
         </div>
       </div>
-      <div class="statusbar"><span>6 objeto(s)</span><span>Usuário: JUNK</span></div>
+      <div class="statusbar"><span id="file-count">4 objeto(s)</span><span>Usuário: JUNK</span></div>
     </section>
 
     <section id="terminal" class="window terminal-window" data-window="terminal" style="left:29%;top:29%;width:min(590px,84vw)">
       <div class="titlebar"><span class="window-title"><span class="mini-app dark">_&gt;</span> Rosie Terminal — JUNK</span><div class="window-controls"><button data-minimize="terminal" aria-label="Minimizar">_</button><button data-close="terminal" aria-label="Fechar">×</button></div></div>
-      <div class="terminal-content"><div id="terminal-output" class="terminal-output"><p>ROSIE CAFÉ SYSTEMS [versão 2.1.0]</p><p>(c) Rosie Café Corporation. Todos os direitos reservados.</p><p>Usuário conectado: JUNK</p><p>Digite <b>help</b> para listar comandos.</p><p class="terminal-warning">Aviso: comandos não autorizados podem ser registrados.</p></div>
+      <div class="terminal-content"><div id="terminal-output" class="terminal-output"><p>ROSIE CAFÉ SYSTEMS [versão 2.2.0]</p><p>(c) Rosie Café Corporation. Todos os direitos reservados.</p><p>Usuário conectado: JUNK</p><p>Digite <b>help</b> para listar comandos.</p><p class="terminal-warning">Aviso: comandos não autorizados podem ser registrados.</p></div>
         <form id="terminal-form" class="terminal-form"><label for="terminal-input">&gt;</label><input id="terminal-input" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Comando do terminal"><button type="submit">Executar</button></form>
       </div>
     </section>
@@ -67,7 +71,7 @@
 
     <section id="recycle" class="window" data-window="recycle" style="left:32%;top:24%;width:min(430px,82vw)">
       <div class="titlebar"><span class="window-title">♲ Lixeira</span><div class="window-controls"><button data-minimize="recycle" aria-label="Minimizar">_</button><button data-close="recycle" aria-label="Fechar">×</button></div></div>
-      <div class="window-body"><p>A lixeira está vazia.</p><p class="tiny muted">Última limpeza: registro indisponível.</p><button class="xp-button" id="restore-button">Verificar itens do sistema</button><p id="restore-note" class="tiny"></p></div>
+      <div class="window-body"><p>A lixeira está vazia.</p><p class="tiny muted">Última limpeza: registro indisponível.</p><button class="xp-button" id="restore-button">Verificar itens do sistema</button><p id="restore-note" class="tiny"></p><div id="trash-items" class="trash-items"></div></div>
     </section>
 
     <section id="reader" class="window reader-window" data-window="reader" style="left:25%;top:20%;width:min(520px,82vw)">
@@ -75,10 +79,26 @@
       <div class="reader-menu">Arquivo　 Editar　 Formatar　 Exibir　 Ajuda</div><pre id="reader-content" class="reader-content"></pre><div class="statusbar"><span>Bloco de Notas</span><span>Somente leitura</span></div>
     </section>
 
+    <section id="vision" class="window" data-window="vision" style="left:19%;top:12%;width:min(620px,86vw)">
+      <div class="titlebar"><span class="window-title">📹 Rosie Vision — Monitoramento interno</span><div class="window-controls"><button data-minimize="vision" aria-label="Minimizar">_</button><button data-close="vision" aria-label="Fechar">×</button></div></div>
+      <div class="window-body">
+        <p><strong>ROSIE VISION 0.7B</strong> · Terminal de monitoramento</p>
+        <p class="tiny muted">Estado das câmeras recuperado parcialmente. Acesso JUNK: visualização restrita.</p>
+        <div class="camera-grid">
+          <div class="camera-feed"><strong>CAM-01 · PALCO</strong><span>SEM SINAL</span></div>
+          <div class="camera-feed"><strong>CAM-02 · SALÃO</strong><span>SEM SINAL</span></div>
+          <div class="camera-feed"><strong>CAM-03 · CORREDOR</strong><span>SEM SINAL</span></div>
+          <div class="camera-feed"><strong>CAM-04 · MANUTENÇÃO</strong><span>SEM SINAL</span></div>
+        </div>
+        <p class="tiny">Nota: uma câmera não deveria continuar transmitindo depois do encerramento da unidade.</p>
+      </div>
+      <div class="statusbar"><span>Rede local</span><span>4 câmeras registradas · 0 disponíveis</span></div>
+    </section>
+
     <div id="start-menu" class="start-menu" hidden>
       <div class="start-user"><div class="user-avatar">J</div><div><strong>JUNK</strong><small>Funcionário temporário</small></div></div>
       <div class="start-columns"><div class="start-apps"><button data-open="welcome">▣ Meu Computador</button><button data-open="files">📁 Explorador de Arquivos</button><button data-open="mail">✉ Correio Interno</button><button data-open="terminal">_&gt; Terminal</button><button data-open="recycle">♲ Lixeira</button></div><div class="start-links"><strong>Rosie Café</strong><span>Ajuda e suporte</span><span>Programas internos</span><hr><span class="tiny">Acesso: JUNK</span></div></div>
-      <div class="start-footer"><span>Rosie OS 2.1</span><button id="logoff-button">Encerrar sessão</button></div>
+      <div class="start-footer"><span>Rosie OS 2.2</span><button id="logoff-button">Encerrar sessão</button></div>
     </div>
 
     <footer class="taskbar"><button id="start-button" class="start-button"><span class="windows-flag">✿</span> iniciar</button><div id="task-buttons" class="task-buttons"></div><div class="tray"><span title="Conexão local">▰</span><span title="Volume">◖))</span><time id="clock">00:00</time></div></footer>
