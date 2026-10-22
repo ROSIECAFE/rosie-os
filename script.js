@@ -286,8 +286,28 @@ Anexo: ausente.`
         'Verificação concluída. Um item órfão foi localizado no diretório.';
     }
 
+    
+    const archiveButton = $('#archived-mail-button');
+    const archiveHint = $('#mail-archive-hint');
+
+    if (archiveButton) {
+      const archiveFound = discovered.has('archived_mail.txt');
+
+      archiveButton.disabled = !archiveFound;
+      archiveButton.textContent = archiveFound
+        ? 'Abrir mensagem arquivada'
+        : 'Mensagem arquivada · indisponível';
+
+      if (archiveHint) {
+        archiveHint.textContent = archiveFound
+          ? 'Registro recuperado. Abra a mensagem para ler o conteúdo.'
+          : 'Dica: procure uma função de recuperação no terminal.';
+      }
+    }
+
     renderTrash();
   }
+  
 
   function activateWindow(id) {
     const win = $(`[data-window="${id}"]`);
@@ -400,6 +420,7 @@ Anexo: ausente.`
       'Comandos de catálogo: Animatronics Logs; Animatronics [Nome]; Animatronics Diagnostics; Animatronics Incidents'
     );
     addLine('Acesso JUNK: alguns comandos estão bloqueados.');
+        addLine('Correio: open mail | Recuperação: restore archive');
   }
 
   function exportBackup() {
@@ -638,7 +659,13 @@ Anexo: ausente.`
         break;
 
       case 'open':
-        if (arg.toLowerCase() === 'vision') {
+        if (
+          arg.toLowerCase() === 'mail' ||
+          arg.toLowerCase() === 'correio'
+        ) {
+          activateWindow('mail');
+          addLine('Correio interno aberto. 1 mensagem nova.');
+        } else if (arg.toLowerCase() === 'vision') {
           if (!unlockedApps.has('rosie-vision')) {
             addLine('Acesso negado. Aplicativo não autorizado.', 'terminal-warning');
             addLine('Um pacote de autorização pode estar disponível.');
@@ -934,4 +961,3 @@ Anexo: ausente.`
 
   // Fim da inicialização
 })();
-                  
