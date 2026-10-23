@@ -8,8 +8,11 @@
   const input = $('#terminal-input');
   const toast = $('#toast');
   const taskButtons = $('#task-buttons');
-  const SAVE_KEY = 'rosieOS22.save';
-  const LEGACY_KEY = 'rosieOS21.save';
+  const SAVE_KEY = 'rosieOS23.save';
+const LEGACY_KEYS = [
+  'rosieOS22.save',
+  'rosieOS21.save'
+];
   
   // ROSIE OS: áudio e efeitos sonoros
   const SOUND_KEY = 'rosieOS22.sound';
@@ -349,8 +352,14 @@ Anexo: ausente.`
 
   function loadSave() {
     try {
-      const raw = localStorage.getItem(SAVE_KEY) ||
-                  localStorage.getItem(LEGACY_KEY);
+      let raw = localStorage.getItem(SAVE_KEY);
+
+if (!raw) {
+  for (const key of LEGACY_KEYS) {
+    raw = localStorage.getItem(key);
+    if (raw) break;
+  }
+}
       if (!raw) return;
       const data = JSON.parse(raw);
       (data.discovered || []).forEach(x => discovered.add(x));
@@ -523,21 +532,21 @@ Anexo: ausente.`
 
   function printHelp() {
     addLine('Comandos disponíveis:');
-    addLine(
-      'help | whoami | date | status | files | read <arquivo> | open <programa> | clear'
-    );
-    addLine('backup export | backup import <código>');
-    addLine(
-      'Comandos de catálogo: Animatronics Logs; Animatronics [Nome]; Animatronics Diagnostics; Animatronics Incidents'
-    );
-    addLine('Acesso JUNK: alguns comandos estão bloqueados.');
-        addLine('Correio: open mail | Recuperação: restore archive');
+addLine(
+  'help | whoami | date | status | files | read <arquivo> | open <programa> | clear'
+);
+addLine('backup export | backup import <código>');
+addLine('restore archive');
+addLine(
+  'Animatronics Logs | Animatronics [Nome] | Animatronics Diagnostics [Nome] | Animatronics Incidents [Nome]'
+);
+addLine('Acesso JUNK: alguns comandos estão bloqueados.');
   }
 
   function exportBackup() {
     const payload = btoa(unescape(encodeURIComponent(JSON.stringify({
       format: 'RosieOSSave',
-      version: '2.2.0',
+      version: '2.3.2',
       discovered: [...discovered],
       unlockedApps: [...unlockedApps],
       trashChecked: !!savedState.trashChecked
