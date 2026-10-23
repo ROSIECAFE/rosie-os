@@ -241,3 +241,6 @@ body{overflow:hidden}
     transition: none;
   }
 }
+.boot-screen[hidden] {
+  display: none !important;
+}
