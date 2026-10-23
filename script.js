@@ -10,6 +10,113 @@
   const taskButtons = $('#task-buttons');
   const SAVE_KEY = 'rosieOS22.save';
   const LEGACY_KEY = 'rosieOS21.save';
+  
+  // ROSIE OS: áudio e efeitos sonoros
+  const SOUND_KEY = 'rosieOS22.sound';
+  let soundEnabled = false;
+  let audioContext = null;
+
+  try {
+    soundEnabled = localStorage.getItem(SOUND_KEY) === 'on';
+  } catch (e) {}
+
+  function getAudioContext() {
+    if (!audioContext) {
+      const AudioClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioClass) return null;
+      audioContext = new AudioClass();
+    }
+
+    if (audioContext.state === 'suspended') {
+      audioContext.resume().catch(() => {});
+    }
+
+    return audioContext;
+  }
+
+  function playTone(frequency = 660, duration = 0.07, type = 'square', volume = 0.025) {
+    if (!soundEnabled) return;
+
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    const oscillator = ctx.createOscillator();
+    const gain = ctx.createGain();
+    const now = ctx.currentTime;
+
+    oscillator.type = type;
+    oscillator.frequency.setValueAtTime(frequency, now);
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.exponentialRampToValueAtTime(volume, now + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+    oscillator.connect(gain);
+    gain.connect(ctx.destination);
+    oscillator.start(now);
+    oscillator.stop(now + duration + 0.02);
+  }
+
+  function playSound(name) {
+    if (!soundEnabled) return;
+
+    // Arquivos opcionais: se não existirem, usamos sons sintetizados.
+    const soundFiles = {
+      boot: 'sounds/boot.mp3',
+      open: 'sounds/open.wav',
+      close: 'sounds/close.wav',
+      terminal: 'sounds/terminal.wav',
+      alert: 'sounds/alert.wav'
+    };
+
+    const fallback = {
+      boot: [[440, 0.12], [660, 0.14], [880, 0.20]],
+      open: [[660, 0.05], [880, 0.06]],
+      close: [[620, 0.05], [420, 0.08]],
+      terminal: [[720, 0.04]],
+      alert: [[440, 0.13], [330, 0.18]]
+    };
+
+    let usedFallback = false;
+
+    const useFallback = () => {
+      if (usedFallback) return;
+      usedFallback = true;
+
+      (fallback[name] || []).forEach(([frequency, duration], index) => {
+        setTimeout(() => playTone(frequency, duration), index * 115);
+      });
+    };
+
+    const audio = new Audio(soundFiles[name] || '');
+    audio.volume = 0.35;
+    audio.onerror = useFallback;
+
+    const playback = audio.play();
+
+    if (playback && typeof playback.catch === 'function') {
+      playback.catch(useFallback);
+    }
+  }
+
+  function setSoundEnabled(enabled) {
+    soundEnabled = enabled;
+
+    try {
+      localStorage.setItem(SOUND_KEY, enabled ? 'on' : 'off');
+    } catch (e) {}
+
+    const button = $('#boot-sound');
+
+    if (button) {
+      button.textContent = enabled ? '♫ Som: ligado' : '♫ Som: desligado';
+      button.setAttribute('aria-pressed', String(enabled));
+    }
+
+    if (enabled) {
+      getAudioContext();
+      playTone(660, 0.08);
+    }
+  }
   let zIndex = 5;
   let toastTimer;
   const discovered = new Set();
@@ -781,6 +888,93 @@ Anexo: ausente.`
   // Inicialização do sistema
   loadSave();
   updateFiles();
+
+  
+  function startBootSequence() {
+    const screen = $('#boot-screen');
+    const log = $('#boot-log');
+    const progress = $('#boot-progress');
+    const status = $('#boot-status');
+    const soundButton = $('#boot-sound');
+
+    if (!screen || !log || !progress || !status) {
+      console.error('Rosie OS: elementos da tela de boot não encontrados.');
+      return;
+    }
+
+    if (soundButton) {
+      soundButton.textContent = soundEnabled ? '♫ Som: ligado' : '♫ Som: desligado';
+      soundButton.setAttribute('aria-pressed', String(soundEnabled));
+
+      soundButton.addEventListener('click', () => {
+        setSoundEnabled(!soundEnabled);
+      });
+    }
+
+    const lines = [
+      { text: 'ROSIE BIOS v2.2.0', progress: 5 },
+      { text: 'Verificando memória do sistema ........ OK', progress: 16 },
+      { text: 'Carregando módulos corporativos ...... OK', progress: 29 },
+      { text: 'Montando unidade C:\\ROSIE ............ OK', progress: 42 },
+      { text: 'Verificando diretório JUNK ........... OK', progress: 56 },
+      { text: 'Restaurando preferências locais ...... OK', progress: 70 },
+      { text: 'Sincronizando catálogo de arquivos ... OK', progress: 82 },
+      { text: 'Inicializando interface gráfica ..... OK', progress: 94 },
+      { text: 'Bem-vindo à família Rosie.', progress: 100 }
+    ];
+
+    let index = 0;
+
+    screen.hidden = false;
+    screen.classList.remove('boot-finished');
+    log.replaceChildren();
+    progress.style.width = '0%';
+    status.textContent = 'POST em execução...';
+
+    function finishBoot() {
+      status.textContent = 'Área de trabalho pronta.';
+      progress.style.width = '100%';
+
+      setTimeout(() => {
+        screen.classList.add('boot-finished');
+
+        setTimeout(() => {
+          screen.hidden = true;
+        }, 700);
+      }, 550);
+    }
+
+    function nextLine() {
+      if (index >= lines.length) {
+        finishBoot();
+        return;
+      }
+
+      const line = lines[index];
+      const p = document.createElement('p');
+      p.textContent = '> ' + line.text;
+
+      if (line.text.includes('JUNK')) {
+        p.className = 'boot-warning';
+      }
+
+      log.appendChild(p);
+      progress.style.width = line.progress + '%';
+      status.textContent = 'Inicializando... ' + line.progress + '%';
+
+      if (soundEnabled) {
+        playTone(520 + (index % 3) * 100, 0.035, 'square', 0.018);
+      }
+
+      index++;
+      setTimeout(nextLine, 380);
+    }
+
+    setTimeout(() => {
+      playSound('boot');
+      nextLine();
+    }, 350);
+  }
 
   $$('[data-open]').forEach(btn => {
     btn.addEventListener('click', () => {
