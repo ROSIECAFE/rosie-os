@@ -87,7 +87,7 @@ body{overflow:hidden}
 .mail-body{max-height:min(68vh,620px);overflow:auto}.mail-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #d7dce6}.mail-message{background:#fff;padding:12px;border:1px solid #cbd3e0;box-shadow:inset 1px 1px #f7f9fc;margin-bottom:12px}.mail-message p{line-height:1.5;margin:10px 0}.mail-signature{border-top:1px dotted #c5cad3;padding-top:9px;color:#4a5363}.mail-archive-notice p{margin:7px 0}.mail-archive-notice button:disabled{opacity:.62;cursor:not-allowed;filter:grayscale(.25)}.mail-archive-notice small{display:block;margin-top:7px;color:#5d6370}.mail-row{display:grid;grid-template-columns:1fr;gap:3px;padding:9px;background:#f0f4fb;border:1px solid #d7dfed}.mail-row small{color:#626b79}
 @media(max-width:650px){.mail-body{max-height:62vh}.mail-toolbar{align-items:flex-start;flex-direction:column}.mail-message{padding:10px}}
 
-/* Rosie OS 2.3.2 · Fisher.exe, progressão de acesso e câmeras quadradas */
+/* Rosie OS 2.4.0 · Fisher.exe, progressão de acesso e câmeras quadradas */
 .promotion-mail{border-left:4px solid #68a76b}
 .promotion-mail[hidden],#fisher-game[hidden],#fisher-lock[hidden]{display:none}
 .trash-app-item{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:10px;border:1px solid #d2c6b8;background:#fffaf0;font:12px Tahoma;cursor:pointer}
@@ -99,11 +99,10 @@ body{overflow:hidden}
 .fisher-password-form label,.fisher-hud{font:bold 11px Consolas,monospace;color:#2b5261}
 .fisher-password-form input{flex:1;min-width:100px;padding:7px;border:1px solid #9eb5b7;background:#fff;font:13px Consolas,monospace}
 .fisher-hud{display:flex;justify-content:space-between;padding:8px;background:#e4f0ed;border:1px solid #b6ceca}
-.fisher-board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;padding:10px;margin:10px 0;background:linear-gradient(#8ec7d2,#c5e8e2 55%,#e3f2e6);border:3px inset #7b9fa1;min-height:190px}
-.fisher-target{position:relative;min-height:47px;border:1px solid #c3d5d4;border-radius:4px;background:#eaf7f5;color:#2a6473;font-size:22px;cursor:pointer;box-shadow:inset 0 1px #fff}
-.fisher-target.bomb{background:#f5e7db;color:#6f4a3a}.fisher-target.bug{font:bold 19px Consolas,monospace;color:#456f67;background:#c2d9d2;border:1px dashed #709b91}
-.fisher-target.found{background:#343c40;color:#f7d4d4;border-color:#c65e65;box-shadow:0 0 0 2px #f4b0b0 inset}
-.fisher-target.caught{opacity:.35;cursor:default}.fisher-target:disabled{cursor:default}
+.fisher-board{position:relative;overflow:hidden;padding:10px;margin:10px 0;background:linear-gradient(#7fc6df 0%,#b7e8e6 58%,#e5f1d2 100%);border:3px inset #7b9fa1;min-height:270px;isolation:isolate}.fisher-board:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 28px,#ffffff22 29px 30px);pointer-events:none}.fisher-board:after{content:"";position:absolute;left:0;right:0;bottom:0;height:22px;background:linear-gradient(transparent,#c9d6a0);pointer-events:none}
+.fisher-target{position:absolute;left:-52px;z-index:1;min-width:48px;min-height:40px;padding:3px;border:0;background:transparent;color:#2a6473;font-size:30px;cursor:pointer;animation:fisher-swim var(--fish-duration,8s) linear infinite;animation-delay:var(--fish-delay,0s);filter:drop-shadow(0 2px 1px #315f6644);touch-action:manipulation}.fisher-target:nth-child(even){transform:scaleX(-1)}.fisher-target:hover{filter:drop-shadow(0 0 5px #fff)}@keyframes fisher-swim{from{left:-55px}to{left:calc(100% + 55px)}}
+.fisher-target.bomb{font-size:28px}.fisher-target.fisher-anomaly{z-index:3;animation:fisher-glitch .45s steps(2,end) infinite,fisher-swim var(--fish-duration,8s) linear infinite;filter:hue-rotate(125deg) saturate(2);text-shadow:3px 0 #ff2b7a,-3px 0 #00e5ff}.fisher-target.fisher-anomaly:after{content:"";position:absolute;inset:8px -5px;border-top:2px solid #ff2b7a;border-bottom:2px solid #00e5ff;opacity:.7}@keyframes fisher-glitch{0%{clip-path:inset(0 0 0 0)}50%{clip-path:inset(30% 0 20% 0);translate:4px 0}100%{clip-path:inset(10% 0 50% 0);translate:-3px 0}}
+.fisher-target.found{opacity:.3}.fisher-target.caught{opacity:.35;cursor:default}.fisher-target:disabled{cursor:default}
 .fisher-message{min-height:30px;padding:8px;background:#f1f0df;border:1px solid #d7d5bb;font:11px Consolas,monospace;color:#4d5d4e}
 .camera-viewer{max-width:440px;margin:12px auto}
 .camera-square{aspect-ratio:1/1;width:100%;min-height:0;padding:12px;position:relative;overflow:hidden;background:repeating-linear-gradient(0deg,#101a18 0,#101a18 3px,#1b2924 4px,#1b2924 5px);border:3px inset #64796d;color:#a8e9b6;display:flex;flex-direction:column;justify-content:space-between;font:11px Consolas,monospace}
@@ -113,11 +112,11 @@ body{overflow:hidden}
 .camera-square small{align-self:flex-end;color:#8cbd98}
 .camera-controls{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:9px}
 .camera-controls span{font:bold 11px Consolas,monospace;color:#4a594f;white-space:nowrap}
-@media(max-width:650px){.fisher-board{gap:4px;padding:6px}.fisher-target{min-height:42px;font-size:18px}.camera-viewer{width:100%}.camera-square{aspect-ratio:1/1}.camera-controls .xp-button{padding:6px 7px;font-size:10px}}
+@media(max-width:650px){.fisher-board{min-height:230px;padding:6px}.fisher-target{min-width:42px;min-height:36px;font-size:25px}.camera-viewer{width:100%}.camera-square{aspect-ratio:1/1}.camera-controls .xp-button{padding:6px 7px;font-size:10px}}
 
 
 /* ==================================
-   ROSIE OS 2.3.2 | BOOT SCREEN RESTAURADO
+   ROSIE OS 2.4.0 | BOOT SCREEN RESTAURADO
    ================================== */
 .boot-screen{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;padding:24px;overflow:auto;background:#080b0a;color:#c5ffd1;font-family:"Courier New",monospace;opacity:1;visibility:visible;transition:opacity 650ms ease,visibility 650ms ease}
 .boot-screen.boot-finished{opacity:0;visibility:hidden;pointer-events:none}
@@ -148,4 +147,10 @@ body{overflow:hidden}
 .fisher-target:focus-visible{outline:3px solid #bd5578;outline-offset:2px}
 .promotion-mail{margin-top:12px;background:#f5fff2}
 @media(max-width:650px){.fisher-body{max-height:64vh}.fisher-logo{font-size:24px}.fisher-password-form{align-items:stretch}.fisher-password-form label{width:100%}.fisher-password-form input{min-width:0;width:100%}}
-                   
+
+/* Rosie Vision update: brief visual interference event and mobile audio toggle */
+.camera-square.camera-rare-event{animation:camera-rare-glitch .12s steps(2,end) 12;border-color:#ff6b86;box-shadow:inset 0 0 28px #ff2d5c88}
+.camera-square.camera-rare-event:before{content:'FRAME CORROMPIDO';position:absolute;inset:42% 0 auto;text-align:center;z-index:4;color:#ff6b86;background:#111b14cc;font:bold 12px Consolas,monospace;letter-spacing:2px;padding:8px 0}
+@keyframes camera-rare-glitch{0%{transform:translateX(0);filter:none}25%{transform:translateX(3px);filter:hue-rotate(90deg)}50%{transform:translateX(-4px);filter:contrast(2)}75%{transform:translateX(2px);filter:invert(.25)}}
+.tray-audio{border:0;background:transparent;color:inherit;font:inherit;padding:2px 4px;cursor:pointer;min-width:25px}
+.tray-audio[aria-pressed="true"]{color:#b8f5bd;text-shadow:0 0 5px #b8f5bd}
