@@ -148,4 +148,4 @@ body{overflow:hidden}
 .fisher-target:focus-visible{outline:3px solid #bd5578;outline-offset:2px}
 .promotion-mail{margin-top:12px;background:#f5fff2}
 @media(max-width:650px){.fisher-body{max-height:64vh}.fisher-logo{font-size:24px}.fisher-password-form{align-items:stretch}.fisher-password-form label{width:100%}.fisher-password-form input{min-width:0;width:100%}}
-              
+                   
