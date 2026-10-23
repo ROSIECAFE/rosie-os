@@ -86,3 +86,158 @@ body{overflow:hidden}
 /* Correio interno · Rosie OS 2.2 */
 .mail-body{max-height:min(68vh,620px);overflow:auto}.mail-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #d7dce6}.mail-message{background:#fff;padding:12px;border:1px solid #cbd3e0;box-shadow:inset 1px 1px #f7f9fc;margin-bottom:12px}.mail-message p{line-height:1.5;margin:10px 0}.mail-signature{border-top:1px dotted #c5cad3;padding-top:9px;color:#4a5363}.mail-archive-notice p{margin:7px 0}.mail-archive-notice button:disabled{opacity:.62;cursor:not-allowed;filter:grayscale(.25)}.mail-archive-notice small{display:block;margin-top:7px;color:#5d6370}.mail-row{display:grid;grid-template-columns:1fr;gap:3px;padding:9px;background:#f0f4fb;border:1px solid #d7dfed}.mail-row small{color:#626b79}
 @media(max-width:650px){.mail-body{max-height:62vh}.mail-toolbar{align-items:flex-start;flex-direction:column}.mail-message{padding:10px}}
+/* ==================================
+   ROSIE OS 2.2 | BOOT SCREEN
+   ================================== */
+
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  overflow: auto;
+  background: #080b0a;
+  color: #c5ffd1;
+  font-family: "Courier New", monospace;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 650ms ease, visibility 650ms ease;
+}
+
+.boot-screen.boot-finished {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.boot-panel {
+  width: min(620px, 100%);
+  padding: 28px;
+  border: 1px solid #416c4b;
+  background: #0b100d;
+  box-shadow: 0 0 35px #152f1d66;
+}
+
+.boot-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.boot-logo {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  border: 2px solid #c5ffd1;
+  color: #c5ffd1;
+  font-family: Georgia, serif;
+  font-size: 34px;
+  font-weight: bold;
+}
+
+.boot-brand-name {
+  font-size: clamp(20px, 5vw, 29px);
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.boot-brand-subtitle {
+  margin-top: 5px;
+  color: #77a983;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.boot-version {
+  margin-bottom: 14px;
+  color: #91b99a;
+  font-size: 12px;
+}
+
+.boot-log {
+  min-height: 170px;
+  max-height: 240px;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.boot-log p {
+  margin: 0;
+}
+
+.boot-log .boot-warning {
+  color: #f1c47a;
+}
+
+.boot-log .boot-error {
+  color: #f18b8b;
+}
+
+.boot-progress-track {
+  height: 8px;
+  margin-top: 24px;
+  overflow: hidden;
+  border: 1px solid #416c4b;
+  background: #101a13;
+}
+
+.boot-progress {
+  width: 0;
+  height: 100%;
+  background: #80d895;
+  transition: width 180ms linear;
+}
+
+.boot-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 13px;
+  color: #91b99a;
+  font-size: 11px;
+}
+
+#boot-sound {
+  padding: 8px 10px;
+  border: 1px solid #416c4b;
+  border-radius: 0;
+  background: #111b14;
+  color: #c5ffd1;
+  font: inherit;
+  cursor: pointer;
+}
+
+#boot-sound:focus-visible {
+  outline: 2px solid #c5ffd1;
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .boot-panel {
+    padding: 20px 16px;
+  }
+
+  .boot-log {
+    font-size: 11px;
+  }
+
+  .boot-brand-subtitle {
+    letter-spacing: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-screen,
+  .boot-progress {
+    transition: none;
+  }
+}
