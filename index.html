@@ -8,6 +8,32 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  
+<!-- ROSIE OS: tela de inicialização -->
+<section id="boot-screen" class="boot-screen" aria-label="Inicialização do Rosie OS">
+  <div class="boot-panel">
+    <div class="boot-brand">
+      <div class="boot-logo">R</div>
+      <div>
+        <div class="boot-brand-name">ROSIE CAFÉ</div>
+        <div class="boot-brand-subtitle">CORPORATE OPERATING SYSTEM</div>
+      </div>
+    </div>
+
+    <div class="boot-version">Rosie OS [Version 2.2.0]</div>
+
+    <div id="boot-log" class="boot-log" aria-live="polite"></div>
+
+    <div class="boot-progress-track">
+      <div id="boot-progress" class="boot-progress"></div>
+    </div>
+
+    <div class="boot-footer">
+      <span id="boot-status">Inicializando sistema...</span>
+      <button id="boot-sound" type="button">♫ Som: desligado</button>
+    </div>
+  </div>
+</section>
   <main id="desktop" class="desktop" aria-label="Área de trabalho Rosie OS">
     <div class="wallpaper-glow"></div>
     <header class="top-note">
