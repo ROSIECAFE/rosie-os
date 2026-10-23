@@ -41,7 +41,7 @@
       <div class="window-body welcome-body">
         <div class="welcome-banner"><div class="big-rosie">R</div><div><h1>Bem-vindo à Rosie Café!</h1><p>Um ambiente de trabalho mais doce, todos os dias.</p></div></div>
         <p>Este terminal de trabalho é destinado a funcionários autorizados da Rosie Café. A organização começa com você.</p>
-        <div class="notice"><strong>Conta atual:</strong> JUNK <span class="level-pill">NÍVEL DE ACESSO 0</span><br><small>Alguns recursos estão indisponíveis para este usuário.</small></div>
+        <div class="notice"><strong>Conta atual:</strong> <span id="welcome-rank">JUNK</span> <span class="level-pill">NÍVEL DE ACESSO 0</span><br><small>Alguns recursos estão indisponíveis para este usuário.</small></div>
         <div class="welcome-actions"><button class="xp-button" data-open="files">Explorar arquivos</button><button class="xp-button" data-open="terminal">Abrir terminal</button></div>
         <p class="tiny muted">Rosie OS 2.3.2 · Ambiente simulado · Agradecemos sua colaboração!</p>
       </div>
@@ -65,7 +65,7 @@
           <p class="file-hint">Selecione um arquivo para abrir. Alguns itens podem aparecer após descobrir pistas.</p>
         </div>
       </div>
-      <div class="statusbar"><span id="file-count">4 objeto(s)</span><span>Usuário: JUNK</span></div>
+      <div class="statusbar"><span id="file-count">4 objeto(s)</span><span>Usuário: <span id="files-rank">JUNK</span></span></div>
     </section>
 
     <section id="terminal" class="window terminal-window" data-window="terminal" style="left:29%;top:29%;width:min(590px,84vw)">
@@ -80,7 +80,7 @@
       <div class="window-body mail-body">
         <div class="mail-toolbar"><strong>Caixa de entrada</strong><span class="level-pill">SERVIDOR LOCAL</span></div>
         <article class="mail-message">
-          <div class="mail-row"><strong>Christopher</strong><span>Re: revisão de rotina</span><small>22/10/2022 · 08:14</small></div>
+          <div class="mail-row"><strong>Christopher</strong><span>Re: revisão de rotina</span><small>17/02/1998 · 08:14</small></div>
           <p>Bom dia, equipe!</p>
           <p>A inauguração está chegando e precisamos manter todos os relatórios organizados. A manutenção informou que alguns documentos antigos voltaram a aparecer no sistema. Por favor, não os movam para a pasta compartilhada. Vou verificar isso pessoalmente.</p>
           <p>Ah, mais uma coisa: se o terminal mostrar um horário que não corresponde ao relógio da estação, registrem a ocorrência e continuem o turno normalmente.</p>
@@ -94,7 +94,7 @@
 
     <section id="recycle" class="window" data-window="recycle" style="left:32%;top:24%;width:min(430px,82vw)">
       <div class="titlebar"><span class="window-title">♲ Lixeira</span><div class="window-controls"><button data-minimize="recycle" aria-label="Minimizar">_</button><button data-close="recycle" aria-label="Fechar">×</button></div></div>
-      <div class="window-body"><p>A lixeira está vazia.</p><p class="tiny muted">Última limpeza: registro indisponível.</p><button class="xp-button" id="restore-button">Verificar itens do sistema</button><p id="restore-note" class="tiny"></p><div id="trash-items" class="trash-items"></div><div class="trash-apps"><p class="tiny muted">Aplicativos recuperáveis</p><button id="fisher-trash-item" class="trash-app-item" type="button" hidden><span>🐟 <strong>Fisher.exe</strong></span><small>Jogo de arcade · arquivo recuperado</small></button></div></div>
+      <div class="window-body"><p>Itens removidos ou recuperados parcialmente.</p><p class="tiny muted">Última limpeza: registro indisponível.</p><button class="xp-button" id="restore-button">Verificar itens do sistema</button><p id="restore-note" class="tiny"></p><div id="trash-items" class="trash-items"></div><div class="trash-apps"><p class="tiny muted">Aplicativos recuperáveis</p><button id="fisher-trash-item" class="trash-app-item" type="button"><span>🐟 <strong>Fisher.exe</strong></span><small>Jogo de arcade · protegido por senha</small></button></div></div>
     </section>
 
     <section id="reader" class="window reader-window" data-window="reader" style="left:25%;top:20%;width:min(520px,82vw)">
