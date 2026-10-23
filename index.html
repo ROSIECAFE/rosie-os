@@ -14,7 +14,7 @@
         <div class="boot-logo">R</div>
         <div><div class="boot-brand-name">ROSIE CAFÉ</div><div class="boot-brand-subtitle">CORPORATE OPERATING SYSTEM</div></div>
       </div>
-      <div class="boot-version">Rosie OS [Version 2.3.2]</div>
+      <div class="boot-version">Rosie OS [Version 2.4.0]</div>
       <div id="boot-log" class="boot-log" aria-live="polite"></div>
       <div class="boot-progress-track"><div id="boot-progress" class="boot-progress"></div></div>
       <div class="boot-footer"><span id="boot-status">Inicializando sistema...</span><button id="boot-sound" type="button" aria-pressed="false">♫ Som: desligado</button></div>
@@ -43,7 +43,7 @@
         <p>Este terminal de trabalho é destinado a funcionários autorizados da Rosie Café. A organização começa com você.</p>
         <div class="notice"><strong>Conta atual:</strong> <span id="welcome-rank">JUNK</span> <span class="level-pill">NÍVEL DE ACESSO 0</span><br><small>Alguns recursos estão indisponíveis para este usuário.</small></div>
         <div class="welcome-actions"><button class="xp-button" data-open="files">Explorar arquivos</button><button class="xp-button" data-open="terminal">Abrir terminal</button></div>
-        <p class="tiny muted">Rosie OS 2.3.2 · Ambiente simulado · Agradecemos sua colaboração!</p>
+        <p class="tiny muted">Rosie OS 2.4.0 · Ambiente simulado · Agradecemos sua colaboração!</p>
       </div>
     </section>
 
@@ -57,9 +57,6 @@
           <button class="file-item" data-doc="company_info.txt"><span>📄</span><span>company_info.txt</span></button>
           <button class="file-item" data-doc="staff_memo.txt"><span>📄</span><span>staff_memo.txt</span></button>
           <button class="file-item hidden-file" data-doc="maintenance.log" data-reveal="maintenance.log"><span>📄</span><span>maintenance.log</span></button>
-          <button class="file-item hidden-file" data-doc="incident_04.txt" data-reveal="incident_04.txt"><span>📄</span><span>incident_04.txt</span></button>
-          <button class="file-item hidden-file" data-doc="archived_mail.txt" data-reveal="archived_mail.txt"><span>✉</span><span>archived_mail.txt</span></button>
-          <button class="file-item hidden-file" data-doc="mechanic_statement_07.txt" data-reveal="mechanic_statement_07.txt"><span>📄</span><span>mechanic_statement_07.txt</span></button>
           <button class="file-item hidden-file" data-doc="animatronics_logs.txt" data-reveal="animatronics_logs.txt"><span>📄</span><span>animatronics_logs.txt</span></button>
           <button class="file-item hidden-file" data-doc="rosie_vision.pkg" data-reveal="rosie_vision.pkg"><span>📦</span><span>rosie_vision.pkg</span></button>
           <p class="file-hint">Selecione um arquivo para abrir. Alguns itens podem aparecer após descobrir pistas.</p>
@@ -70,7 +67,7 @@
 
     <section id="terminal" class="window terminal-window" data-window="terminal" style="left:29%;top:29%;width:min(590px,84vw)">
       <div class="titlebar"><span class="window-title"><span class="mini-app dark">_&gt;</span> Rosie Terminal — <span id="terminal-rank">JUNK</span></span><div class="window-controls"><button data-minimize="terminal" aria-label="Minimizar">_</button><button data-close="terminal" aria-label="Fechar">×</button></div></div>
-      <div class="terminal-content"><div id="terminal-output" class="terminal-output"><p>ROSIE CAFÉ SYSTEMS [versão 2.3.2]</p><p>(c) Rosie Café Corporation. Todos os direitos reservados.</p><p>Usuário conectado: JUNK</p><p>Digite <b>help</b> para listar comandos.</p><p class="terminal-warning">Aviso: comandos não autorizados podem ser registrados.</p></div>
+      <div class="terminal-content"><div id="terminal-output" class="terminal-output"><p>ROSIE CAFÉ SYSTEMS [versão 2.4.0]</p><p>(c) Rosie Café Corporation. Todos os direitos reservados.</p><p>Usuário conectado: JUNK</p><p>Digite <b>help</b> para listar comandos.</p><p class="terminal-warning">Aviso: comandos não autorizados podem ser registrados.</p></div>
         <form id="terminal-form" class="terminal-form"><label for="terminal-input">&gt;</label><input id="terminal-input" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Comando do terminal"><button type="submit">Executar</button></form>
       </div>
     </section>
@@ -118,10 +115,9 @@
         </section>
         <section id="fisher-game" hidden>
           <div class="fisher-hud"><span>PONTOS: <b id="fisher-score">000</b></span><span>FALHAS: <b id="fisher-bug-count">0/5</b></span></div>
-          <p>Recolha os peixes de vidro. Evite as bombas. Alguns elementos parecem não pertencer ao jogo.</p>
-          <div id="fisher-board" class="fisher-board" aria-label="Tabuleiro do Fisher"></div>
+          <p>Aproveite alguns minutos de pescaria. O tanque parece estar funcionando normalmente.</p>
+          <div id="fisher-board" class="fisher-board" aria-label="Aquário do Fisher"></div>
           <p id="fisher-message" class="fisher-message" role="status" aria-live="polite">Conexão estabelecida. Boa pescaria!</p>
-          <button id="fisher-reset" class="xp-button" type="button">Reiniciar pontuação</button>
         </section>
       </div>
       <div class="statusbar"><span>Fisher Arcade</span><span id="fisher-status">Aplicativo recuperado</span></div>
@@ -133,21 +129,21 @@
         <p><strong>ROSIE VISION 0.7B</strong> · Terminal de monitoramento</p>
         <p class="tiny muted">Estado das câmeras recuperado parcialmente. Acesso JUNK: visualização restrita.</p>
         <div class="camera-viewer">
-          <div class="camera-square"><strong id="camera-name">CAM-01 · PALCO PRINCIPAL</strong><span id="camera-state">SEM SINAL</span><small id="camera-timestamp">REC: --:--:--</small></div>
-          <div class="camera-controls"><button id="camera-prev" class="xp-button" type="button">◀ Anterior</button><span id="camera-index">01 / 08</span><button id="camera-next" class="xp-button" type="button">Próxima ▶</button></div>
+          <div class="camera-square"><strong id="camera-name">CAM 01 · ENTRADA / RECEPÇÃO</strong><span id="camera-state">SEM SINAL</span><small id="camera-timestamp">REC: --:--:--</small></div>
+          <div class="camera-controls"><button id="camera-prev" class="xp-button" type="button">◀ Anterior</button><span id="camera-index">01 / 13</span><button id="camera-next" class="xp-button" type="button">Próxima ▶</button></div>
         </div>
         <p class="tiny">Nota: uma câmera não deveria continuar transmitindo depois do encerramento da unidade.</p>
       </div>
-      <div class="statusbar"><span>Rede local</span><span id="camera-statusbar">8 câmeras registradas · sinal indisponível</span></div>
+      <div class="statusbar"><span>Rede local</span><span id="camera-statusbar">13 câmeras registradas · sinal indisponível</span></div>
     </section>
 
     <div id="start-menu" class="start-menu" hidden>
       <div class="start-user"><div class="user-avatar">J</div><div><strong>JUNK</strong><small>Funcionário temporário</small></div></div>
       <div class="start-columns"><div class="start-apps"><button data-open="welcome">▣ Meu Computador</button><button data-open="files">📁 Explorador de Arquivos</button><button data-open="mail">✉ Correio Interno</button><button data-open="terminal">_&gt; Terminal</button><button data-open="recycle">♲ Lixeira</button></div><div class="start-links"><strong>Rosie Café</strong><span>Ajuda e suporte</span><span>Programas internos</span><hr><span class="tiny">Acesso: JUNK</span></div></div>
-      <div class="start-footer"><span>Rosie OS 2.3.2</span><button id="logoff-button">Encerrar sessão</button></div>
+      <div class="start-footer"><span>Rosie OS 2.4.0</span><button id="logoff-button">Encerrar sessão</button></div>
     </div>
 
-    <footer class="taskbar"><button id="start-button" class="start-button"><span class="windows-flag">✿</span> iniciar</button><div id="task-buttons" class="task-buttons"></div><div class="tray"><span title="Conexão local">▰</span><span title="Volume">◖))</span><time id="clock">00:00</time></div></footer>
+    <footer class="taskbar"><button id="start-button" class="start-button"><span class="windows-flag">✿</span> iniciar</button><div id="task-buttons" class="task-buttons"></div><div class="tray"><span title="Conexão local">▰</span><button id="desktop-audio-toggle" class="tray-audio" type="button" aria-pressed="false" title="Ativar ou desativar sons">♫</button><time id="clock">00:00</time></div></footer>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
     <div id="shutdown-screen" class="shutdown-screen" hidden><div class="shutdown-card"><div class="big-rosie">R</div><h2>Rosie OS</h2><p>Sessão encerrada.</p><button id="login-again" class="xp-button">Iniciar sessão</button></div></div>
   </main>
