@@ -316,6 +316,8 @@ Anexo: ausente.`
     win.classList.add('open');
     win.style.zIndex = ++zIndex;
 
+    playSound('open');
+
     $$('.task-button').forEach(b =>
       b.classList.toggle('selected', b.dataset.task === id)
     );
@@ -355,6 +357,8 @@ Anexo: ausente.`
   function closeWindow(id) {
     const win = $(`[data-window="${id}"]`);
     if (win) win.classList.remove('open');
+
+    playSound('close');
 
     const task = $(`[data-task="${id}"]`);
     if (task) task.remove();
@@ -564,6 +568,8 @@ Anexo: ausente.`
     if (!cmd) return;
 
     addLine('> ' + cmd);
+
+    playSound('terminal');
 
     const low = cmd.toLowerCase();
 
@@ -960,4 +966,5 @@ Anexo: ausente.`
   });
 
   // Fim da inicialização
+  startBootSequence();
 })();
